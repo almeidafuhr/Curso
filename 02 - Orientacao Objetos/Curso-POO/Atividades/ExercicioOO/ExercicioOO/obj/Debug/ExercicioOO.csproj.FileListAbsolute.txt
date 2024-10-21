@@ -1,0 +1,7 @@
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\bin\Debug\ExercicioOO.exe.config
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\bin\Debug\ExercicioOO.exe
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\bin\Debug\ExercicioOO.pdb
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\obj\Debug\ExercicioOO.csprojAssemblyReference.cache
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\obj\Debug\ExercicioOO.csproj.CoreCompileInputs.cache
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\obj\Debug\ExercicioOO.exe
+C:\Users\E37083\Desktop\02 - Orientacao Objetos\Curso-POO\Atividades\ExercicioOO\ExercicioOO\obj\Debug\ExercicioOO.pdb
