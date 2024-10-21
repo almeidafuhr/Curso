@@ -1,0 +1,20 @@
+public class Registro
+    {
+        public int ID { get; set; }
+        public decimal Valor { get; set; }
+        public int TipoID { get; set; }
+        public int ExtratoID { get; set; }
+
+        public Registro(int id, decimal valor, int tipoId, int extratoId)
+        {
+            ID = id;
+            Valor = valor;
+            TipoID = tipoId;
+            ExtratoID = extratoId;
+        }
+
+        public void ExibirDetalhes()
+        {
+            Console.WriteLine($"ID: {ID}, Valor: {Valor}, TipoID: {TipoID}, ExtratoID: {ExtratoID}");
+        }
+    }
