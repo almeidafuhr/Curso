@@ -1,0 +1,17 @@
+1. 
+Faça um programa que solicite um input ao usuário na variável A, e outro input na variável B. 
+Ao final o programa deve trocar o valor das variáveis e mostrar o resultado ao usuário.
+
+2. 
+Crie um programa que simule um saque simples. 
+Declare uma variável que represente o saldo de uma conta bancária e atribua um valor inicial a ela. 
+Declare uma segunda variável para representar o valor que será sacado da conta. 
+Mostre na tela os valores iniciais do saldo e do valor de saque. 
+Em seguida, subtraia o valor do saque do saldo inicial e mostre o novo saldo na tela.
+
+Desafio: 
+
+Declare uma variável com um valor inicial. 
+Solicite ao usuário um valor para saque, e verifique se o saque é possível considerando o valor inicial atribuido. 
+Caso o saque seja possível, desconte o valor a ser sacado do valor inicial e mostre o resultado final ao usuário. 
+Se não for possível realizar o saque, deve ser mostrada uma mensagem ao usuário informando o ocorrido. 

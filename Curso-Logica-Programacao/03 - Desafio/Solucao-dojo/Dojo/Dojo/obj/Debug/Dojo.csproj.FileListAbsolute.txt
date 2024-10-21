@@ -1,0 +1,14 @@
+C:\Treinamento\Solution\Dojo\Dojo\bin\Debug\Dojo.exe.config
+C:\Treinamento\Solution\Dojo\Dojo\bin\Debug\Dojo.exe
+C:\Treinamento\Solution\Dojo\Dojo\bin\Debug\Dojo.pdb
+C:\Treinamento\Solution\Dojo\Dojo\obj\Debug\Dojo.csprojAssemblyReference.cache
+C:\Treinamento\Solution\Dojo\Dojo\obj\Debug\Dojo.csproj.CoreCompileInputs.cache
+C:\Treinamento\Solution\Dojo\Dojo\obj\Debug\Dojo.exe
+C:\Treinamento\Solution\Dojo\Dojo\obj\Debug\Dojo.pdb
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\bin\Debug\Dojo.exe.config
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\bin\Debug\Dojo.exe
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\bin\Debug\Dojo.pdb
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\obj\Debug\Dojo.csprojAssemblyReference.cache
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\obj\Debug\Dojo.csproj.CoreCompileInputs.cache
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\obj\Debug\Dojo.exe
+C:\Users\E37083\Desktop\Curso-Logica-Programacao\03 - Desafio\Solucao-dojo\Dojo\Dojo\obj\Debug\Dojo.pdb
