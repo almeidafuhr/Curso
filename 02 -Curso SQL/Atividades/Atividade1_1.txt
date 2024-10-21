@@ -1,0 +1,273 @@
+1. **Exercício 1: Seleção Básica**
+   - **Pergunta**: Escreva uma consulta SQL para selecionar todos os registros da tabela **EXTRATO**. Liste todos os atributos.
+   - **Dica**: Utilize `SELECT *`.note
+
+	SELECT * FROM PXC.EXTRATO;
+
+2. **Exercício 2: Seleção com WHERE**
+   - **Pergunta**: Escreva uma consulta SQL que retorne os `NUMEROCONTA` e `NOMETITULAR` da tabela **EXTRATO** onde o `NOMETITULAR` é "João Silva".
+   - **Dica**: Utilize a cláusula `WHERE`.
+
+	SELECT NUMERO_CONTA, NOME_TITULAR FROM PXC.EXTRATO WHERE NOME_TITULAR = 'Adam May';
+
+ **Exercício 3: Operadores Lógicos**
+   - **Pergunta**: Escreva uma consulta SQL para selecionar os registros da tabela **EXTRATO** onde o `NUMEROCONTA` é "12345" ou o `NOMETITULAR` é "Maria Souza".
+   - **Dica**: Utilize operadores lógicos (`OR`).
+
+	SELECT * FROM PXC.EXTRATO WHERE NUMERO_CONTA = '499473' or NOME_TITULAR = 'Adam May';
+
+4. **Exercício 4: ORDER BY**
+   - **Pergunta**: Escreva uma consulta SQL que retorne todos os registros da tabela **EXTRATO** ordenados pelo `NOMETITULAR` em ordem alfabética.
+   - **Dica**: Utilize a cláusula `ORDER BY`.
+
+	SELECT * FROM PXC.EXTRATO ORDER BY NOME_TITULAR;
+
+5. **Exercício 5: LIMIT**
+   - **Pergunta**: Escreva uma consulta SQL que retorne os primeiros 3 registros da tabela **REGISTRO**.
+   - **Dica**: Utilize a cláusula `LIMIT`.
+
+	SELECT * FROM PXC.REGISTRO ORDER BY 1 DESC LIMIT 3;
+
+6. **Exercício 6: Seleção com Múltiplas Condições**
+   - **Pergunta**: Escreva uma consulta SQL que retorne todos os `NUMEROCONTA` da tabela **EXTRATO** onde o `NOMETITULAR` é "João Silva" e o `ID` é maior que 1.
+   - **Dica**: Utilize a cláusula `WHERE` com múltiplas condições.
+
+	SELECT NUMERO_CONTA FROM PXC.EXTRATO WHERE NOME_TITULAR = 'Adam May' AND ID > 1;
+
+--------------------------------------------------||------------------------------------------------
+
+1. **Exercício 1: INNER JOIN**
+   - **Pergunta**: Escreva uma consulta SQL que retorne o `NUMEROCONTA` e o `VALOR` dos registros que possuem correspondência entre as tabelas **EXTRATO** e **REGISTRO**.
+   - **Dica**: Utilize a cláusula `INNER JOIN`.
+	
+	SELECT NUMERO_CONTA, VALOR FROM PXC.EXTRATO INNER JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO LIMIT 200;
+	SELECT NUMERO_CONTA, VALOR FROM PXC.EXTRATO INNER JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+	SELECT E.NUMERO_CONTA, R.VALOR FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May'; 
+
+2. **Exercício 2: LEFT JOIN**
+   - **Pergunta**: Escreva uma consulta SQL que mostre todos os `NUMEROCONTA` da tabela **EXTRATO** e os respectivos `VALOR` da tabela **REGISTRO**. Caso não haja correspondência, o `VALOR` deve aparecer como `NULL`.
+   - **Dica**: Utilize a cláusula `LEFT JOIN`.
+
+	SELECT NUMERO_CONTA, VALOR from PXC.EXTRATO LEFT JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO LIMIT 200;
+	SELECT NUMERO_CONTA, VALOR from PXC.EXTRATO LEFT JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+	SELECT E.NUMERO_CONTA, R.VALOR FROM PXC.EXTRATO E LEFT JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+
+3. **Exercício 3: RIGHT JOIN**
+   - **Pergunta**: Escreva uma consulta SQL que retorne todos os registros da tabela **REGISTRO** e os `NUMEROCONTA` correspondentes da tabela **EXTRATO**. Se não houver correspondência, o `NUMEROCONTA` deve aparecer como `NULL`.
+   - **Dica**: Utilize a cláusula `RIGHT JOIN`.
+
+	SELECT NUMERO_CONTA, PXC.EXTRATO.ID, VALOR, ID_TIPO, ID_EXTRATO FROM PXC.EXTRATO RIGHT JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO LIMIT 200;
+	SELECT NUMERO_CONTA, PXC.EXTRATO.ID, VALOR, ID_TIPO, ID_EXTRATO FROM PXC.EXTRATO RIGHT JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+	SELECT E.NUMERO_CONTA, R.ID, R.VALOR, R.ID_TIPO, R.ID_EXTRATO FROM PXC.EXTRATO E RIGHT JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+
+4. **Exercício 4: FULL OUTER JOIN**
+   - **Pergunta**: Escreva uma consulta SQL que exiba todos os `NUMEROCONTA` da tabela **EXTRATO** e todos os `VALOR` da tabela **REGISTRO**. Os resultados devem incluir todos os registros, mesmo se não houver correspondência entre as tabelas.
+   - **Dica**: Utilize a cláusula `FULL JOIN`.
+
+	SELECT NUMERO_CONTA, VALOR FROM PXC.EXTRATO FULL JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO LIMIT 200;
+	SELECT NUMERO_CONTA, VALOR FROM PXC.EXTRATO FULL JOIN PXC.REGISTRO ON PXC.EXTRATO.ID = PXC.REGISTRO.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+	SELECT E.NUMERO_CONTA, R.VALOR FROM PXC.EXTRATO E FULL JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO WHERE NOME_TITULAR = 'Adam May';
+
+5. **Exercício 5: CROSS JOIN**
+   - **Pergunta**: Escreva uma consulta SQL que retorne um produto cartesiano entre a tabela **EXTRATO** e a tabela **TIPOREGISTRO**, mostrando o `NUMEROCONTA` e o `TIPO`.
+   - **Dica**: Utilize a cláusula `CROSS JOIN`.
+
+	SELECT NUMERO_CONTA, TIPO FROM PXC.EXTRATO CROSS JOIN PXC.TIPO_REGISTRO;
+	SELECT NUMERO_CONTA, TIPO FROM PXC.EXTRATO CROSS JOIN PXC.TIPO_REGISTRO WHERE NOME_TITULAR = 'Adam May';
+
+--------------------------------------------------||------------------------------------------------
+
+#### **Exercício 1: Junção com Condições Múltiplas**
+Escreva uma consulta que retorne o nome do titular da conta, o tipo de movimentação e o valor total das movimentações maiores que 500, agrupadas por titular e tipo de movimentação.
+
+- **Tabelas**: EXTRATO, TIPOREGISTRO, REGISTRO
+- **Condições**:
+  1. Filtrar movimentações com valor maior que 500.
+  2. Agrupar os resultados por nome do titular e tipo de movimentação.
+
+	SELECT E.NOME_TITULAR, T.TIPO, SUM(R.VALOR) AS SOMA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO 
+	INNER JOIN PXC.TIPO_REGISTRO T ON T.ID = R.ID_TIPO
+	GROUP BY E.NOME_TITULAR, T.TIPO
+	HAVING SUM(R.VALOR) > 500;
+
+#### **Exercício 2: Consulta com Função Agregada e Ordenação**
+Crie uma consulta que retorne o tipo de movimentação e o valor médio das movimentações agrupadas por tipo. Os resultados devem ser ordenados pelo valor médio em ordem decrescente.
+
+- **Tabelas**: TIPOREGISTRO, REGISTRO
+- **Condições**:
+  1. Agrupar por tipo de movimentação.
+  2. Ordenar os resultados pelo valor médio (descendente).
+
+	SELECT T.TIPO, AVG(R.VALOR) AS MEDIA
+	FROM PXC.REGISTRO R INNER JOIN PXC.TIPO_REGISTRO T ON R.ID_TIPO = T.ID
+	GROUP BY TIPO
+	ORDER BY MEDIA DESC
+
+#### **Exercício 3: Contagem com JOIN**
+Escreva uma consulta que conte quantas movimentações cada titular de conta realizou, independentemente do tipo de movimentação.
+
+- **Tabelas**: EXTRATO, REGISTRO
+- **Condições**:
+  1. Agrupar os resultados pelo nome do titular da conta.
+
+	SELECT E.NOME_TITULAR, COUNT(*) AS QTDREGISTROS FROM
+	PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO WHERE E.ID < 30
+	GROUP BY NOME_TITULAR 
+
+#### **Exercício 4: Consulta com Subconsulta**
+Utilize uma subconsulta para retornar os titulares que possuem uma movimentação cujo valor é superior à média de todas as movimentações.
+
+- **Tabelas**: EXTRATO, REGISTRO
+- **Condições**:
+  1. Filtrar titulares com movimentações maiores que a média de todas as movimentações.
+
+	SELECT E.NOME_TITULAR
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > (SELECT AVG(R.VALOR) FROM PXC.REGISTRO R) AND E.ID < 50
+	GROUP BY E.NOME_TITULAR;
+
+#### **Exercício 6: Consulta com HAVING**
+Crie uma consulta que retorne os titulares que tenham um valor total de movimentações superior a 1000. Use a cláusula `HAVING` para filtrar o resultado.
+
+- **Tabelas**: EXTRATO, REGISTRO
+- **Condições**:
+  1. Agrupar os resultados por titular.
+  2. Filtrar pelo valor total de movimentações maior que 1000.
+
+	SELECT E.NOME_TITULAR, SUM(R.VALOR)
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE E.ID < 50
+	GROUP BY E.NOME_TITULAR
+	HAVING SUM(R.VALOR) > 1000;
+
+--------------------------------------------------||------------------------------------------------
+
+#### **Exercício 1: União de Consultas**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` dos extratos onde o nome do titular é "Rory Fry" ou o valor do registro associado ao extrato é maior que 500, utilizando a operação `UNION`.
+
+	SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E
+	WHERE E.NOME_TITULAR = 'Rory Fry'
+	UNION
+	(SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E, PXC.REGISTRO R 
+	WHERE R.VALOR > 500 AND E.ID < 15)
+
+#### **Exercício 2: Intersecção de Consultas**
+Crie uma consulta SQL que retorne os `NUMEROCONTA` que aparecem tanto na tabela **EXTRATO** para titulares chamados "Amari Black" quanto na tabela **REGISTRO** para registros com valor maior que 900, utilizando a operação `INTERSECT`.
+
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Amari Black'
+	INTERSECT
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN  PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 900 AND E.ID < 100 AND E.ID > 50
+
+#### **Exercício 3: Diferença de Conjuntos**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujo titular é "Daisy Marquez", mas que não possuem registros com valor menor que 200, utilizando a operação `EXCEPT`.
+
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE NOME_TITULAR = 'Daisy Marquez'
+	EXCEPT
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 200 AND E.ID > 50 AND E.ID < 100;
+
+#### **Exercício 4: União com Intersecção**
+Crie uma consulta SQL que retorne os `NUMEROCONTA` dos extratos onde o titular é "Rory Fry" ou "Amari Black", e faça uma intersecção com os extratos que possuem registros de valor maior que 300. Utilize as operações `UNION` e `INTERSECT`.
+
+	SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Rory Fry'
+	UNION
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Amari Black'
+	INTERSECT 
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 300 AND E.ID > 50 AND E.ID < 100;
+
+#### **Exercício 5: Intersecção com Diferença**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujos titulares são "Kameron York" e "Ryland Kelly", mas que não possuem registros com valor entre 100 e 500. Utilize as operações `INTERSECT` e `EXCEPT`.
+
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Kameron York' OR E.NOME_TITULAR = 'Ryland Kelly'
+	EXCEPT
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 100 AND R.VALOR < 500 AND E.ID > 50 AND E.ID < 100;
+
+#### **Exercício 6: Diferença de Conjuntos com União**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujos titulares são "Rory Fry" e que não possuem registros com valor menor que 1000, e faça uma união com os `NUMEROCONTA` de extratos onde o titular é "Amari Black". Utilize as operações `EXCEPT` e `UNION`.
+
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E
+	WHERE E.NOME_TITULAR = 'Rory Fry'
+	EXCEPT
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR < 1000 AND E.ID > 50 AND E.ID < 100
+	UNION
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE NOME_TITULAR = 'Amari Black' 
+
+#### **Exercício 7: Intersecção em Subconsulta**
+Crie uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujos titulares são "Kameron York" e que têm um registro associado cujo valor está entre 500 e 1000. Use uma subconsulta para selecionar os registros e depois faça a intersecção com a tabela **EXTRATO**.
+
+	SELECT E.NUMERO_CONTA FROM PXC.EXTRATO E 
+	INTERSECT
+	(SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE NOME_TITULAR = 'Kameron York' AND R.VALOR > 500 AND R.VALOR < 1000)
+
+#### **Exercício 8: Uso de Parênteses com UNION e INTERSECT**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujo titular é "Kameron York", faça a intersecção com os extratos que possuem registros de valor maior que 300, e depois faça a união com os extratos cujo titular é "Daisy Marquez". Utilize corretamente os parênteses para garantir a precedência adequada.
+
+	SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Kameron York'
+	INTERSECT
+	(SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 300
+	UNION
+	(SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E 
+	WHERE E.NOME_TITULAR = 'Daisy Marquez'));
+
+#### **Exercício 9: Consultas Aninhadas com EXCEPT**
+Crie uma consulta SQL que retorne os `NUMEROCONTA` de extratos que possuem um registro com valor maior que 500, exceto aqueles que também possuem um registro com valor menor que 100. Utilize uma subconsulta com `EXCEPT` para filtrar os resultados.
+
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 500
+	EXCEPT
+	(SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR < 100); 
+
+#### **Exercício 10: Operações Múltiplas (UNION, INTERSECT, EXCEPT)**
+Escreva uma consulta SQL que retorne os `NUMEROCONTA` de extratos cujo titular é "Ryland Kelly", faça a união com extratos que possuem registros de valor maior que 700, interseccione com extratos que possuem o tipo de registro "SAIDA", e finalmente exclua os que possuem registros com valor menor que 200. Utilize as operações `UNION`, `INTERSECT` e `EXCEPT`.
+
+	SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE E.NOME_TITULAR = 'Ryland Kelly'
+	UNION
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR > 700
+	INTERSECT
+	SELECT E.NUMERO_CONTA
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	INNER JOIN PXC.TIPO_REGISTRO T ON R.ID_TIPO = T.ID
+	WHERE T.TIPO = 'SAIDA'
+	EXCEPT
+	SELECT E.NUMERO_CONTA 
+	FROM PXC.EXTRATO E INNER JOIN PXC.REGISTRO R ON E.ID = R.ID_EXTRATO
+	WHERE R.VALOR < 200;
